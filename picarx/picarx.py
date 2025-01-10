@@ -45,7 +45,9 @@ class Picarx(object):
         time.sleep(0.2)
 
         # --------- config_flie ---------
-        self.config_flie = fileDB(config, 777, os.getlogin())
+        username = os.getenv("USER") or os.getenv("USERNAME")
+        self.config_flie = fileDB(config, 777, username)
+        #self.config_flie = fileDB(config, 777, os.getlogin())
 
         # --------- servos init ---------
         self.cam_pan = Servo(servo_pins[0])
